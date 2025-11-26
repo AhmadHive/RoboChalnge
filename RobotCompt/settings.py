@@ -1,132 +1,121 @@
+
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# ===========================
-# SECURITY
-# ===========================
 
-SECRET_KEY = os.getenv("SECRET_KEY")   # ضع المفتاح في متغير بيئة
-
-DEBUG = False   # في الإنتاج دائماً False
-
-ALLOWED_HOSTS = [
-    "*"
-]
-# يمكنك لاحقاً وضع: yourdomain.com – subdomain.hosting.com
+SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-replace-me-for-dev-only")
 
 
-# ===========================
-# APPS
-# ===========================
+DEBUG = os.getenv("DEBUG", "False").lower() in ("1", "true", "yes")
+
+
+_allowed = os.getenv("ALLOWED_HOSTS", "")
+if _allowed:
+    ALLOWED_HOSTS = [h.strip() for h in _allowed.split(",") if h.strip()]
+else:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"] if DEBUG else []
+
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'App',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "App",  
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'RobotCompt.urls'
+ROOT_URLCONF = "RobotCompt.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
-        ],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'RobotCompt.wsgi.application'
-
+WSGI_APPLICATION = "RobotCompt.wsgi.application"
 
 # ===========================
 # DATABASE
 # ===========================
-
-# SQLite للتطوير فقط – في الإنتاج استخدم PostgreSQL لو توفر
+# افتراضيًا sqlite للتطوير. لاستخدام PostgreSQL ضع متغيرات البيئة المناسبة
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-# لاحقاً لأي هوست يمكنك تغييره لـ PostgreSQL
+
+# مثال PostgreSQL (غير مُفعل — فك التعليق إذا أردت التبديل وأضف متغيرات البيئة)
 """
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DB_NAME"),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("DB_PASS"),
-        'HOST': os.getenv("DB_HOST"),
-        'PORT': os.getenv("DB_PORT", "5432"),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASS"),
+        "HOST": os.getenv("DB_HOST", "localhost"),
+        "PORT": os.getenv("DB_PORT", "5432"),
     }
 }
 """
-
 
 # ===========================
 # PASSWORD VALIDATION
 # ===========================
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
-
 
 # ===========================
 # I18N
 # ===========================
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = "en-us"
+TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
 USE_I18N = True
 USE_TZ = True
 
-
 # ===========================
-# STATIC FILES
+# STATIC & MEDIA
 # ===========================
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # لجمع الستاتيك في الإنتاج
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # ===========================
 # DEFAULT PRIMARY KEY FIELD
 # ===========================
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
