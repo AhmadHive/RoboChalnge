@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}معلومات المسابقة - جامعة عمّان العربية للروبوتات والذكاء الاصطناعي 2026{% endblock %}
+
+{% block content %}
+
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-blue) 0%, #001a5e 100%); color: var(--white);">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <h1 class="display-4 fw-bold" data-ar="إعلان مسابقة جامعة عمّان العربية للروبوتات والذكاء الاصطناعي 2026" data-en="Announcement: Amman Arab University Robotics and AI Competition 2026">إعلان مسابقة جامعة عمّان العربية للروبوتات والذكاء الاصطناعي 2026</h1>
+                <h2 class="h3 mb-4" style="color: var(--primary-yellow);" data-ar="نبتكر المستقبل" data-en="We Innovate the Future">نبتكر المستقبل</h2>
+                <p class="lead" data-ar="أكبر حدث طلابي يجمع الإبداع الهندسي والبحث العلمي لتطوير حلول روبوتية مبتكرة تعالج تحديات المجتمع والصناعة." data-en="The largest student event combining engineering creativity and scientific research to develop innovative robotic solutions that address societal and industrial challenges.">أكبر حدث طلابي يجمع الإبداع الهندسي والبحث العلمي لتطوير حلول روبوتية مبتكرة تعالج تحديات المجتمع والصناعة.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="text-center mt-5">
+    <a href="{% url 'download_challenge' %}" class="btn btn-primary btn-lg px-5 py-3 shadow">
+        <i class="fas fa-file-download me-2"></i>
+        More Details - تحميل الملف الكامل
+    </a>
+    <p class="text-muted mt-2 small">DOCX File - ≈2-3 MB</p>
+</div>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title" data-ar="مسارات المسابقة" data-en="Competition Tracks">مسارات المسابقة</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h3 class="h4 mb-0" data-ar="مسار الروبوت العملي – Prototype Track" data-en="Practical Robot Track – Prototype Track">مسار الروبوت العملي – Prototype Track</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" data-ar="تصميم وتطوير روبوت يعمل فعليًا يعالج مشكلة حقيقية، مع عرض مباشر أمام لجنة التحكيم." data-en="Design and develop an actual working robot that addresses a real problem, with live demonstration before the judging committee.">تصميم وتطوير روبوت يعمل فعليًا يعالج مشكلة حقيقية، مع عرض مباشر أمام لجنة التحكيم.</p>
+                        <h4 class="h5 mt-4" style="color: var(--primary-blue);" data-ar="أمثلة للمشاريع:" data-en="Project Examples:">أمثلة للمشاريع:</h4>
+                        <ul>
+                            <li data-ar="روبوت بيئي" data-en="Environmental Robot">روبوت بيئي</li>
+                            <li data-ar="روبوت صناعي" data-en="Industrial Robot">روبوت صناعي</li>
+                            <li data-ar="روبوت طبي" data-en="Medical Robot">روبوت طبي</li>
+                            <li data-ar="روبوت إنقاذ" data-en="Rescue Robot">روبوت إنقاذ</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-header bg-warning text-dark text-center py-3">
+                        <h3 class="h4 mb-0" data-ar="مسار البحث والتطوير – Research and Concept Track" data-en="Research and Development Track – Research and Concept Track">مسار البحث والتطوير – Research and Concept Track</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" data-ar="تقديم فكرة روبوت مقترح (Concept / Research Proposal) مع مخطط التصميم وآلية العمل والتحليل العلمي للمشكلة والحل المقترح." data-en="Submit a proposed robot idea (Concept / Research Proposal) with design schematics, working mechanism, and scientific analysis of the problem and proposed solution.">تقديم فكرة روبوت مقترح (Concept / Research Proposal) مع مخطط التصميم وآلية العمل والتحليل العلمي للمشكلة والحل المقترح.</p>
+                        <p class="card-text fw-bold mt-3" data-ar="المسار مخصص للأفكار العميقة التي لم تصل بعد لمرحلة التصنيع." data-en="This track is dedicated to deep ideas that haven't reached the manufacturing stage yet.">المسار مخصص للأفكار العميقة التي لم تصل بعد لمرحلة التصنيع.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        
+        
+        <h2 class="section-title" data-ar="المحاور الرئيسية للمسابقة" data-en="Main Competition Themes">المحاور الرئيسية للمسابقة</h2>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm">
+                    <i class="fas fa-robot fa-2x me-3" style="color: var(--primary-blue);"></i>
+                    <span data-ar="الروبوتات الطبية والمساعدة في الرعاية الصحية" data-en="Medical and Healthcare Assistance Robots">الروبوتات الطبية والمساعدة في الرعاية الصحية</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm">
+                    <i class="fas fa-leaf fa-2x me-3" style="color: var(--primary-blue);"></i>
+                    <span data-ar="الروبوتات البيئية والاستدامة" data-en="Environmental and Sustainability Robots">الروبوتات البيئية والاستدامة</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm">
+                    <i class="fas fa-industry fa-2x me-3" style="color: var(--primary-blue);"></i>
+                    <span data-ar="الروبوتات الصناعية والأتمتة" data-en="Industrial Robots and Automation">الروبوتات الصناعية والأتمتة</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm">
+                    <i class="fas fa-first-aid fa-2x me-3" style="color: var(--primary-blue);"></i>
+                    <span data-ar="روبوتات الطوارئ والإنقاذ" data-en="Emergency and Rescue Robots">روبوتات الطوارئ والإنقاذ</span>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 mb-3">
+                <div class="d-flex align-items-center p-3 bg-white rounded shadow-sm">
+                    <i class="fas fa-lightbulb fa-2x me-3" style="color: var(--primary-blue);"></i>
+                    <span data-ar="مواضيع مفتوحة" data-en="Open Topics">مواضيع مفتوحة</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title" data-ar="الفئة المستهدفة" data-en="Target Audience">الفئة المستهدفة</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="text-center p-4 border rounded h-100">
+                    <i class="fas fa-user-graduate fa-3x mb-3" style="color: var(--primary-blue);"></i>
+                    <h3 class="h4" data-ar="طلبة الجامعات والكليات" data-en="University and College Students">طلبة الجامعات والكليات</h3>
+                    <p class="mb-0" data-ar="(بكالوريوس ودراسات عليا)" data-en="(Bachelor's and Graduate Studies)">(بكالوريوس ودراسات عليا)</p>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="text-center p-4 border rounded h-100">
+                    <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-blue);"></i>
+                    <h3 class="h4" data-ar="أبناء المجتمع المحلي" data-en="Local Community Members">أبناء المجتمع المحلي</h3>
+                    <p class="mb-0" data-ar="بالتنسيق مع جمعية إبداع الخيرية" data-en="In coordination with Ibdaa Charity Society">بالتنسيق مع جمعية إبداع الخيرية</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="section-title" data-ar="المواعيد الأساسية" data-en="Key Dates">المواعيد الأساسية</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="timeline-item">
+                    <h3 class="h4" style="color: var(--primary-blue);" data-ar="تسليم ملخص الفكرة/المشروع لكلا المسارين" data-en="Submission of Idea/Project Summary for Both Tracks">تسليم ملخص الفكرة/المشروع لكلا المسارين</h3>
+                    <p class="mb-1" data-ar="ملف وصف المشروع أو الفكرة البحثية" data-en="Project description file or research idea">ملف وصف المشروع أو الفكرة البحثية</p>
+                    <p class="fw-bold" style="color: var(--primary-yellow);" data-ar="الموعد النهائي: 15/02/2026" data-en="Deadline: 15/02/2026">الموعد النهائي: 15/02/2026</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="h4" style="color: var(--primary-blue);" data-ar="تسليم النموذج الأولي لمسار الروبوت العملي" data-en="Prototype Submission for Practical Robot Track">تسليم النموذج الأولي لمسار الروبوت العملي</h3>
+                    <p class="mb-1" data-ar="فيديو (3–5 دقائق) يوضح التصميم وآلية العمل" data-en="Video (3-5 minutes) demonstrating design and working mechanism">فيديو (3–5 دقائق) يوضح التصميم وآلية العمل</p>
+                    <p class="fw-bold" style="color: var(--primary-yellow);" data-ar="الموعد النهائي: 30/03/2026" data-en="Deadline: 30/03/2026">الموعد النهائي: 30/03/2026</p>
+                </div>
+                <div class="timeline-item">
+                    <h3 class="h4" style="color: var(--primary-blue);" data-ar="العرض النهائي والتحكيم" data-en="Final Presentation and Judging">العرض النهائي والتحكيم</h3>
+                    <p class="mb-1" data-ar="عروض مباشرة ومعرض المشاريع في الحرم الجامعي" data-en="Live presentations and project exhibition on campus">عروض مباشرة ومعرض المشاريع في الحرم الجامعي</p>
+                    <p class="fw-bold" style="color: var(--primary-yellow);" data-ar="الموعد النهائي: 10/05/2026" data-en="Deadline: 10/05/2026">الموعد النهائي: 10/05/2026</p>
+                </div>
+                <div class="mt-4 p-3 bg-white rounded border">
+                    <p class="mb-0" data-ar="<strong>ملاحظة:</strong> سيتم إرسال قالب الملخص وقالب الفيديو بعد تسجيل الفريق." data-en="<strong>Note:</strong> Summary template and video template will be sent after team registration."><strong>ملاحظة:</strong> سيتم إرسال قالب الملخص وقالب الفيديو بعد تسجيل الفريق.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container">
+        <h2 class="section-title" data-ar="الجوائز" data-en="Prizes">الجوائز</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="prize-card">
+                    <div class="prize-header">
+                        <h3 class="h4 mb-0" data-ar="مسار الروبوت العملي" data-en="Practical Robot Track">مسار الروبوت العملي</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                            <span data-ar="المركز الأول:" data-en="First Place:">المركز الأول:</span>
+                            <span class="prize-amount">3000 $</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                            <span data-ar="المركز الثاني:" data-en="Second Place:">المركز الثاني:</span>
+                            <span class="prize-amount">2000 $</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span data-ar="المركز الثالث:" data-en="Third Place:">المركز الثالث:</span>
+                            <span class="prize-amount">1500 $</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="prize-card">
+                    <div class="prize-header">
+                        <h3 class="h4 mb-0" data-ar="مسار البحث والتطوير" data-en="Research and Development Track">مسار البحث والتطوير</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                            <span data-ar="المركز الأول:" data-en="First Place:">المركز الأول:</span>
+                            <span class="prize-amount">1000 $</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                            <span data-ar="المركز الثاني:" data-en="Second Place:">المركز الثاني:</span>
+                            <span class="prize-amount">750 $</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                            <span data-ar="المركز الثالث:" data-en="Third Place:">المركز الثالث:</span>
+                            <span class="prize-amount">500 $</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span data-ar="الجوائز تكريم فرعية" data-en="Subsidiary Recognition Awards">الجوائز تكريم فرعية</span>
+                            <span class="prize-amount">1250 $</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 text-center" style="background-color: var(--primary-blue); color: var(--white);">
+    <div class="container">
+        <h2 class="h1 mb-4" data-ar="انضموا إلينا وكونوا جزءًا من مستقبل الروبوتات في الأردن والمنطقة." data-en="Join us and be part of the future of robotics in Jordan and the region.">انضموا إلينا وكونوا جزءًا من مستقبل الروبوتات في الأردن والمنطقة.</h2>
+    </div>
+</section>
+
+{% endblock %}
