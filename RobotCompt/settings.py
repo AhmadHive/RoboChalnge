@@ -1,26 +1,18 @@
-
 from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 SECRET_KEY = os.getenv("SECRET_KEY", "django-insecure-replace-me-for-dev-only")
-
-
 DEBUG = os.getenv("DEBUG", "False").lower() in ("1", "true", "yes")
-
 
 _allowed = os.getenv("ALLOWED_HOSTS", "")
 if _allowed:
     ALLOWED_HOSTS = [h.strip() for h in _allowed.split(",") if h.strip()]
 else:
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1"] if DEBUG else []
-
+    ALLOWED_HOSTS = ["*"] if not DEBUG else ["localhost", "127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -29,7 +21,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "App",  
+    "App",
 ]
 
 MIDDLEWARE = [
@@ -62,10 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "RobotCompt.wsgi.application"
 
-# ===========================
-# DATABASE
-# ===========================
-# افتراضيًا sqlite للتطوير. لاستخدام PostgreSQL ضع متغيرات البيئة المناسبة
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -73,23 +61,6 @@ DATABASES = {
     }
 }
 
-# مثال PostgreSQL (غير مُفعل — فك التعليق إذا أردت التبديل وأضف متغيرات البيئة)
-"""
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASS"),
-        "HOST": os.getenv("DB_HOST", "localhost"),
-        "PORT": os.getenv("DB_PORT", "5432"),
-    }
-}
-"""
-
-# ===========================
-# PASSWORD VALIDATION
-# ===========================
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -97,25 +68,16 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# ===========================
-# I18N
-# ===========================
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = os.getenv("TIME_ZONE", "UTC")
 USE_I18N = True
 USE_TZ = True
 
-# ===========================
-# STATIC & MEDIA
-# ===========================
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")  # لجمع الستاتيك في الإنتاج
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
-# ===========================
-# DEFAULT PRIMARY KEY FIELD
-# ===========================
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
