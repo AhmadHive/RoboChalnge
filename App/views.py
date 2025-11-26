@@ -1,5 +1,6 @@
+# views.py
 from django.shortcuts import render
-from django.http import FileResponse, HttpResponse
+from django.http import HttpResponse
 import os
 from django.conf import settings
 
@@ -8,20 +9,20 @@ def information(request):
 
 def download_challenge_file(request):
     try:
-        # المسار الصحيح بعد تعديل الاسم
-        file_path = os.path.join(settings.BASE_DIR, 'static', 'files', 'robotics_challenge.docx')
-        
-        print(f"جاري تحميل الملف من: {file_path}")  # للتصحيح
-        print(f"الملف موجود: {os.path.exists(file_path)}")  # للتصحيح
-        
+        # المسار داخل STATIC_ROOT بعد جمع الستاتيك
+        file_path = os.path.join(settings.STATIC_ROOT, 'files', 'robotics_challenge.docx')
+
         if os.path.exists(file_path):
             with open(file_path, 'rb') as file:
-                response = HttpResponse(file.read(), 
-                    content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+                response = HttpResponse(
+                    file.read(),
+                    content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                )
                 response['Content-Disposition'] = 'attachment; filename="robotics_challenge.docx"'
                 return response
         else:
-            return HttpResponse("الملف غير موجود. تأكد من أن الملف في static/files/robotics_challenge.docx")
-            
+            return HttpResponse(
+                "الملف غير موجود. تأكد من أن الملف في static/files/robotics_challenge.docx"
+            )
     except Exception as e:
         return HttpResponse(f"حدث خطأ أثناء التحميل: {str(e)}")
