@@ -16,70 +16,329 @@
             --primary-yellow: #FFB500;
             --black: #000000;
             --white: #FFFFFF;
+            --base-font-size: 16px;
+        }
+        
+        /* إعادة تعيين حجم الخط الأساسي */
+        html {
+            font-size: 100%; /* 16px افتراضيًا */
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--white);
             color: var(--black);
-            font-size: 1rem;
+            font-size: 1rem; /* 16px */
+            line-height: 1.6;
         }
         
-        .header-spline {
-            height: 18.75rem;
-            width: 100%;
-            background: var(--white);
+        /* تصميم جديد لرأس الموقع */
+        .site-header {
             position: relative;
+            width: 100%;
+            min-height: 25rem; /* ~400px */
             overflow: hidden;
             border-bottom: 0.125rem solid var(--primary-blue);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         }
         
-        .logo-container {
+        /* شعار الجامعة الرئيسي */
+        .main-university-logo {
             position: absolute;
-            top: 1.25rem;
-            right: 1.25rem;
+            top: 2rem; /* ~32px */
+            right: 5%;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem; /* ~16px */
+            border-radius: 0.75rem; /* ~12px */
+            box-shadow: 0 0.3125rem 1.25rem rgba(0, 0, 0, 0.2);
+            max-width: 21.875rem; /* ~350px */
+            width: 30%;
+            transition: all 0.3s ease;
+        }
+        
+        .main-university-logo img {
+            height: 5.625rem; /* ~90px */
+            width: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .university-name {
+            text-align: center;
+            margin-top: 0.5rem; /* ~8px */
+            font-weight: bold;
+            color: var(--primary-blue);
+            font-size: 1.2rem; /* ~19px */
+        }
+        
+        /* شعار إضافي على الجانب الآخر */
+        .secondary-logo {
+            position: absolute;
+            top: 2rem; /* ~32px */
+            left: 5%;
+            z-index: 20;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.75rem; /* ~12px */
+            border-radius: 0.75rem; /* ~12px */
+            box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.15);
+            max-width: 18.75rem; /* ~300px */
+            width: 25%;
+        }
+        
+        .secondary-logo img {
+            height: 4.375rem; /* ~70px */
+            width: auto;
+            max-width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .secondary-logo .university-name {
+            font-size: 1rem; /* ~16px */
+        }
+        
+        /* عنوان المسابقة */
+        .competition-title {
+            position: absolute;
+            bottom: 2rem; /* ~32px */
+            right: 5%;
+            left: 5%;
+            z-index: 15;
+            text-align: center;
+            background: rgba(0, 47, 155, 0.85);
+            padding: 1.25rem; /* ~20px */
+            color: var(--white);
+            border-radius: 0.9375rem; /* ~15px */
+            box-shadow: 0 0.3125rem 1.5625rem rgba(0, 0, 0, 0.3);
+        }
+        
+        .competition-title h1 {
+            font-size: 2.2rem; /* ~35px */
+            margin-bottom: 0.625rem; /* ~10px */
+            font-weight: bold;
+        }
+        
+        .competition-title h2 {
+            font-size: 1.5rem; /* ~24px */
+            color: var(--primary-yellow);
+        }
+        
+        /* حاوية المجسم ثلاثي الأبعاد */
+        .spline-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             z-index: 10;
+            opacity: 0.7;
         }
         
-        .logo {
-            height: 5rem; /* تم تكبير شعار الجامعة */
+        .spline-container spline-viewer {
+            width: 100%;
+            height: 100%;
         }
         
+        /* مبدل اللغة */
         .language-switcher {
             position: absolute;
-            top: 1.25rem;
-            left: 1.25rem;
-            z-index: 10;
+            top: 2rem; /* ~32px */
+            left: 5%;
+            z-index: 25;
         }
         
         .btn-language {
             background-color: var(--primary-yellow);
             color: var(--black);
             border: none;
-            border-radius: 1.25rem;
-            padding: 0.5rem 1rem;
+            border-radius: 1.25rem; /* ~20px */
+            padding: 0.6rem 1.2rem; /* ~10px 19px */
             font-weight: bold;
             transition: all 0.3s;
-            font-size: 0.875rem;
+            font-size: 0.95rem; /* ~15px */
+            box-shadow: 0 0.1875rem 0.625rem rgba(255, 181, 0, 0.3);
         }
         
         .btn-language:hover {
             background-color: #e6a300;
-            transform: translateY(-0.125rem);
+            transform: translateY(-0.125rem); /* ~-2px */
+            box-shadow: 0 0.3125rem 0.9375rem rgba(255, 181, 0, 0.4);
         }
         
+        /* تصميم متجاوب للشاشات المتوسطة */
+        @media (max-width: 75rem) { /* 1200px */
+            .site-header {
+                min-height: 22rem; /* ~350px */
+            }
+            
+            .main-university-logo {
+                max-width: 18.75rem; /* ~300px */
+                right: 3%;
+            }
+            
+            .main-university-logo img {
+                height: 5rem; /* ~80px */
+            }
+            
+            .secondary-logo {
+                left: 3%;
+                max-width: 15.625rem; /* ~250px */
+            }
+            
+            .secondary-logo img {
+                height: 3.75rem; /* ~60px */
+            }
+            
+            .competition-title {
+                right: 3%;
+                left: 3%;
+            }
+        }
+        
+        /* تصميم متجاوب للأجهزة اللوحية */
+        @media (max-width: 62rem) { /* 992px */
+            .site-header {
+                min-height: 20rem; /* ~320px */
+            }
+            
+            .main-university-logo {
+                top: 1.25rem; /* ~20px */
+                right: 2%;
+                max-width: 15.625rem; /* ~250px */
+                padding: 0.75rem; /* ~12px */
+            }
+            
+            .main-university-logo img {
+                height: 4rem; /* ~64px */
+            }
+            
+            .university-name {
+                font-size: 1rem; /* ~16px */
+            }
+            
+            .secondary-logo {
+                top: 1.25rem; /* ~20px */
+                left: 2%;
+                max-width: 12.5rem; /* ~200px */
+                padding: 0.625rem; /* ~10px */
+            }
+            
+            .secondary-logo img {
+                height: 3.125rem; /* ~50px */
+            }
+            
+            .secondary-logo .university-name {
+                font-size: 0.875rem; /* ~14px */
+            }
+            
+            .competition-title {
+                margin: 0;
+                padding: 0.9375rem; /* ~15px */
+                bottom: 1.25rem; /* ~20px */
+                right: 2%;
+                left: 2%;
+            }
+            
+            .competition-title h1 {
+                font-size: 1.5rem; /* ~24px */
+            }
+            
+            .competition-title h2 {
+                font-size: 1.125rem; /* ~18px */
+            }
+            
+            .language-switcher {
+                top: 1.25rem; /* ~20px */
+                left: 2%;
+            }
+        }
+        
+        /* تصميم متجاوب للهواتف المحمولة */
+        @media (max-width: 48rem) { /* 768px */
+            .site-header {
+                min-height: 18rem; /* ~288px */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding-top: 1rem; /* ~16px */
+            }
+            
+            /* في الهواتف نجعل الشعار في الأعلى فقط */
+            .main-university-logo {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin: 0 auto 1rem; /* ~16px */
+                max-width: 17.5rem; /* ~280px */
+                width: 90%;
+                padding: 0.9375rem; /* ~15px */
+            }
+            
+            .main-university-logo img {
+                height: 4.5rem; /* ~72px */
+            }
+            
+            .secondary-logo {
+                display: none; /* نخفيه في الهواتف لتبسيط التصميم */
+            }
+            
+            .competition-title {
+                position: relative;
+                margin: 1rem auto; /* ~16px */
+                bottom: auto;
+                top: auto;
+                padding: 0.9375rem; /* ~15px */
+                width: 95%;
+                right: auto;
+                left: auto;
+            }
+            
+            .language-switcher {
+                top: 0.625rem; /* ~10px */
+                left: 2%;
+            }
+            
+            .spline-container {
+                display: none; /* يمكن إخفاء المجسم في الهواتف لتحسين الأداء */
+            }
+        }
+        
+        /* تصميم متجاوب للهواتف الصغيرة جداً */
+        @media (max-width: 36rem) { /* 576px */
+            .site-header {
+                min-height: 16rem; /* ~256px */
+            }
+            
+            .competition-title h1 {
+                font-size: 1.3rem; /* ~21px */
+            }
+            
+            .competition-title h2 {
+                font-size: 1rem; /* ~16px */
+            }
+            
+            .btn-language {
+                padding: 0.5rem 1rem; /* ~8px 16px */
+                font-size: 0.875rem; /* ~14px */
+            }
+        }
+        
+        /* أقسام الموقع الأخرى */
         .partners-section {
             background-color: #f8f9fa;
             padding: 2.5rem 0;
         }
         
         .partner-logo {
-            width: 7.5rem;
-            height: 7.5rem;
+            width: 7.5rem; /* ~120px */
+            height: 7.5rem; /* ~120px */
             border-radius: 50%;
             object-fit: cover;
-            border: 0.1875rem solid var(--primary-blue);
-            margin: 0 auto 0.9375rem;
+            border: 0.1875rem solid var(--primary-blue); /* ~3px */
+            margin: 0 auto 0.9375rem; /* ~15px */
             display: block;
         }
         
@@ -87,57 +346,57 @@
             text-align: center;
             font-weight: bold;
             color: var(--primary-blue);
-            font-size: 0.875rem;
+            font-size: 0.875rem; /* ~14px */
         }
         
         .section-title {
             color: var(--primary-blue);
-            border-bottom: 0.125rem solid var(--primary-yellow);
-            padding-bottom: 0.625rem;
-            margin-bottom: 1.5625rem;
-            font-size: 1.5rem;
+            border-bottom: 0.125rem solid var(--primary-yellow); /* ~2px */
+            padding-bottom: 0.625rem; /* ~10px */
+            margin-bottom: 1.5625rem; /* ~25px */
+            font-size: 1.5rem; /* ~24px */
         }
         
         .timeline-item {
-            border-right: 0.1875rem solid var(--primary-yellow);
-            padding-right: 1.25rem;
-            margin-bottom: 1.875rem;
+            border-right: 0.1875rem solid var(--primary-yellow); /* ~3px */
+            padding-right: 1.25rem; /* ~20px */
+            margin-bottom: 1.875rem; /* ~30px */
             position: relative;
         }
         
         .timeline-item:before {
             content: '';
             position: absolute;
-            right: -0.5rem;
+            right: -0.5rem; /* ~8px */
             top: 0;
-            width: 0.8125rem;
-            height: 0.8125rem;
+            width: 0.8125rem; /* ~13px */
+            height: 0.8125rem; /* ~13px */
             border-radius: 50%;
             background-color: var(--primary-yellow);
         }
         
         .prize-card {
-            border: 0.125rem solid var(--primary-blue);
-            border-radius: 0.625rem;
+            border: 0.125rem solid var(--primary-blue); /* ~2px */
+            border-radius: 0.625rem; /* ~10px */
             transition: all 0.3s;
             height: 100%;
         }
         
         .prize-card:hover {
-            transform: translateY(-0.3125rem);
-            box-shadow: 0 0.625rem 1.25rem rgba(0,0,0,0.1);
+            transform: translateY(-0.3125rem); /* ~5px */
+            box-shadow: 0 0.625rem 1.25rem rgba(0,0,0,0.1); /* ~10px 20px */
         }
         
         .prize-header {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 0.9375rem;
-            border-radius: 0.5rem 0.5rem 0 0;
+            padding: 0.9375rem; /* ~15px */
+            border-radius: 0.5rem 0.5rem 0 0; /* ~8px */
             text-align: center;
         }
         
         .prize-amount {
-            font-size: 1.5rem;
+            font-size: 1.5rem; /* ~24px */
             font-weight: bold;
             color: var(--primary-yellow);
         }
@@ -146,40 +405,98 @@
             background-color: var(--primary-yellow);
             color: var(--black);
             font-weight: bold;
-            padding: 0.75rem 1.875rem;
-            border-radius: 1.875rem;
+            padding: 0.75rem 1.875rem; /* ~12px 30px */
+            border-radius: 1.875rem; /* ~30px */
             border: none;
             transition: all 0.3s;
         }
         
         .btn-register:hover {
             background-color: #e6a300;
-            transform: translateY(-0.1875rem);
-            box-shadow: 0 0.3125rem 0.9375rem rgba(255, 181, 0, 0.4);
+            transform: translateY(-0.1875rem); /* ~3px */
+            box-shadow: 0 0.3125rem 0.9375rem rgba(255, 181, 0, 0.4); /* ~5px 15px */
         }
         
         footer {
             background-color: var(--primary-blue);
             color: var(--white);
-            padding: 1.875rem 0;
-            border-top: 0.125rem solid var(--primary-blue);
+            padding: 1.875rem 0; /* ~30px */
+            border-top: 0.125rem solid var(--primary-blue); /* ~2px */
         }
         
         .footer-logo {
-            height: 4rem; /* تم تكبير شعار الجامعة في الفوتر */
-            margin-bottom: 0.9375rem;
+            height: 4.5rem; /* ~72px */
+            margin-bottom: 0.9375rem; /* ~15px */
+            max-width: 100%;
+            object-fit: contain;
         }
 
         [dir="rtl"] .timeline-item {
-            border-right: 0.1875rem solid var(--primary-yellow);
+            border-right: 0.1875rem solid var(--primary-yellow); /* ~3px */
             border-left: none;
-            padding-right: 1.25rem;
+            padding-right: 1.25rem; /* ~20px */
             padding-left: 0;
         }
         
         [dir="rtl"] .timeline-item:before {
-            right: -0.5rem;
+            right: -0.5rem; /* ~8px */
             left: auto;
+        }
+        
+        [dir="ltr"] .timeline-item {
+            border-left: 0.1875rem solid var(--primary-yellow); /* ~3px */
+            border-right: none;
+            padding-left: 1.25rem; /* ~20px */
+            padding-right: 0;
+        }
+        
+        [dir="ltr"] .timeline-item:before {
+            left: -0.5rem; /* ~8px */
+            right: auto;
+        }
+        
+        /* تحسينات عامة */
+        .form-content {
+            margin-top: 1.5rem; /* ~24px */
+            margin-bottom: 1.5rem; /* ~24px */
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem; /* ~24px */
+        }
+        
+        .card, .form-control, .btn {
+            border-radius: 0.5rem; /* ~8px */
+        }
+        
+        .centered-item {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .section-content {
+            padding-top: 1rem; /* ~16px */
+            padding-bottom: 1rem; /* ~16px */
+        }
+        
+        .content-spacing {
+            margin-bottom: 2rem; /* ~32px */
+        }
+        
+        /* تصحيح لتصميم اللغة الإنجليزية */
+        [dir="ltr"] .main-university-logo {
+            right: auto;
+            left: 5%;
+        }
+        
+        [dir="ltr"] .secondary-logo {
+            left: auto;
+            right: 5%;
+        }
+        
+        [dir="ltr"] .language-switcher {
+            left: auto;
+            right: 5%;
         }
         
         [dir="ltr"] .timeline-item {
@@ -193,45 +510,38 @@
             left: -0.5rem;
             right: auto;
         }
-        
-        /* إضافة أنماط للجدول الجديد للجوائز الفرعية */
-        .subsidiary-prizes-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-        }
-        
-        .subsidiary-prizes-table th,
-        .subsidiary-prizes-table td {
-            padding: 0.75rem;
-            text-align: center;
-            border: 1px solid #dee2e6;
-        }
-        
-        .subsidiary-prizes-table th {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        
-        .subsidiary-prizes-table tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
     </style>
 </head>
 <body>
-    <header class="header-spline">
-        <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%B9%D9%85%D8%A7%D9%86_%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9.jpg" alt="جامعة عمّان العربية" class="logo">
+    <!-- رأس الموقع الجديد -->
+    <header class="site-header">
+        <!-- شعار الجامعة الرئيسي (كبير وواضح) -->
+        <div class="main-university-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%B9%D9%85%D8%A7%D9%86_%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9.jpg" 
+                 alt="جامعة عمّان العربية" 
+                 class="university-logo">
+            <div class="university-name">جامعة عمّان العربية</div>
         </div>
         
+       
+        <!-- مبدل اللغة -->
         <div class="language-switcher">
             <button class="btn-language" id="languageToggle">
                 <i class="fas fa-language"></i> English
             </button>
         </div>
         
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.3/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/ib6VQ9XGw2opfQzj/scene.splinecode"></spline-viewer>
+        <!-- عنوان المسابقة في الأسفل -->
+        <div class="competition-title">
+            <h1 data-ar="مسابقة الروبوتات والذكاء الاصطناعي 2026" data-en="Robotics and AI Competition 2026">مسابقة الروبوتات والذكاء الاصطناعي 2026</h1>
+            <h2 data-ar="نبتكر المستقبل مع جامعة عمّان العربية" data-en="Innovating the Future with Amman Arab University">نبتكر المستقبل مع جامعة عمّان العربية</h2>
+        </div>
+        
+        <!-- المجسم ثلاثي الأبعاد في الخلفية -->
+        <div class="spline-container">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.3/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/ib6VQ9XGw2opfQzj/scene.splinecode"></spline-viewer>
+        </div>
     </header>
 
     <main>
@@ -266,7 +576,9 @@
 
     <footer>
         <div class="container text-center">
-            <img src="" alt="جامعة عمّان العربية" class="footer-logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%AC%D8%A7%D9%85%D8%B9%D8%A9_%D8%B9%D9%85%D8%A7%D9%86_%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9.jpg" 
+                 alt="جامعة عمّان العربية" 
+                 class="footer-logo">
             <p data-ar="جامعة عمّان العربية — نبتكر المستقبل" data-en="Amman Arab University — We Innovate the Future">جامعة عمّان العربية — نبتكر المستقبل</p>
             <p>Created by Amman Arab University</p>
         </div>

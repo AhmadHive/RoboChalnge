@@ -9,7 +9,7 @@ def information(request):
 
 def download_challenge_file(request):
     try:
-        # المسار داخل STATIC_ROOT بعد جمع الستاتيك
+    
         file_path = os.path.join(settings.STATIC_ROOT, 'files', 'robotics_challenge.docx')
 
         if os.path.exists(file_path):
